@@ -15,13 +15,18 @@ import br.com.alura.gerenciador.dao.EmpresaDAO;
 @WebServlet (urlPatterns = "/novaEmpresa")
 public class NovaEmpresa extends HttpServlet{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nome = req.getParameter("nome");
 		Empresa empresa = new Empresa(nome);
 		new EmpresaDAO().adiciona(empresa);
 		PrintWriter writer = resp.getWriter();
-		writer.println("<html><body>Empresaaaaaaa " + nome + " adicionada! </body> </html>");
+		writer.println("<html><body>Empresa: \"" + nome + "\" adicionada! </body> </html>");
 		
 	}
 	
